@@ -23,7 +23,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/Clientes")
+@RequestMapping("/clientes")
 public class ClienteController {
 
 @Autowired
@@ -37,13 +37,13 @@ public List<Cliente> getClintes(){
 return clienteservice.getAllClientes();
 }
 
-@GetMapping("/{Codigo}")
+@GetMapping("/{codigo}")
     public ResponseEntity<Cliente> getClienteByCodigo(@PathVariable int codigo) {
     Cliente cliente = clienteservice.getClienteByCodigo(codigo);
     return ResponseEntity.ok(cliente);
 }
 
-@GetMapping("/{IDCliente}/Reservas")
+@GetMapping("/{idcliente}/reservas")
     public List<ReservaDTO> getVeiculosCliente(@PathVariable int idcliente) {
     Cliente cliente = clienteservice.getClienteByCodigo(idcliente);
     return reservaservice.toListDTO(cliente.getReservas());
@@ -58,7 +58,7 @@ return clienteservice.getAllClientes();
     return ResponseEntity.created(uricomponents.toUri()).build();
 }
 
-@PostMapping("/{IDCliente}/Reservas")
+@PostMapping("/{idcliente}/reservas")
     public ResponseEntity<Cliente> save(@PathVariable int idcliente, @RequestBody Reserva reserva, HttpServletRequest request, UriComponentsBuilder builder) 
 {
     reserva = reservaservice.save(reserva, idcliente);
@@ -66,13 +66,13 @@ return clienteservice.getAllClientes();
     return ResponseEntity.created(uriComponents.toUri()).build();
 }
 
-@DeleteMapping("/{Codigo}")
+@DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remove(@PathVariable int codigo) {
     clienteservice.removeByCodigo(codigo);
     return ResponseEntity.noContent().build();
 }
 
-@PutMapping("/{Codigo}")
+@PutMapping("/{codigo}")
     public ResponseEntity<Cliente> update(@RequestBody ClienteDTO clienteDTO, @PathVariable int codigo) {
     Cliente cliente = clienteservice.fromDTO(clienteDTO);
     cliente.setCodigo(codigo);

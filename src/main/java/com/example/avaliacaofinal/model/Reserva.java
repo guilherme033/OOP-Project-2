@@ -11,7 +11,6 @@ private long numero;
 private String descricao;
 @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
 private LocalDateTime   dataReserva;
-private LocalDateTime   inicio;
 private Cliente cliente;
 private boolean reservaFechada;
 
@@ -92,14 +91,6 @@ public LocalDateTime getDataReserva() {
 
 public void setDataReserva(LocalDateTime dataReserva) {
     this.dataReserva = dataReserva;
-}
-
-public LocalDateTime getInicio() {
-    return inicio;
-}
-
-public void setInicio(LocalDateTime inicio) {
-    this.inicio = inicio;
 }
 
 }
