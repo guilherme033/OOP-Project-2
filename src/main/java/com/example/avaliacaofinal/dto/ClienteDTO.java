@@ -14,7 +14,7 @@ public class ClienteDTO {
     private String endereco;
 
     @NotBlank(message = "CPF obrigatório!")
-    @Length(min=11, max=11, message = "O CPF tem que ter 11 números!")
+    @Length(min=9, max=11, message = "O CPF tem que ter de 9 à 11 números!")
     private String cpf;
 
     public String getNome() {
